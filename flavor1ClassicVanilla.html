@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | Sweet Scoops</title>
+  <link rel="stylesheet" href="Styles/style.css">
+</head>
+<body>
+  <!-- Header, navigation, etc. -->
+
+  <div class="product-details">
+    <h2 id="product-name"></h2>
+    <img src="" alt="" id="product-image">
+    <p id="product-description"></p>
+  </div>
+
+  <!-- Footer section -->
+
+  <script>
+    // Retrieve query parameters from URL
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    // Get product details from query parameters
+    const productName = urlParams.get('name');
+    const productImage = urlParams.get('image');
+    const productDescription = urlParams.get('description');
+
+    // Set product details in HTML
+    document.getElementById('product-name').innerText = productName;
+    document.getElementById('product-image').src = productImage;
+    document.getElementById('product-description').innerText = productDescription;
+  </script>
+</body>
+</html>
