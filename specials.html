@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Ice Creams | Sweet Scoops</title>
+    <link rel="stylesheet" href="Styles/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baby+Kruffy&display=swap">
+    <style>
+        header h1 {
+            font-family: 'Baby Kruffy', cursive;
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 20px;
+            color: #ff6600;
+        }
+
+        .special-ice-cream, .ice-cream-sandwich, .sundae-creation, .ice-cream-cake {
+            position: relative;
+            margin-bottom: 30px;
+            width: calc(50% - 20px); /* Adjusted width to make grid smaller */
+            max-width: 300px; /* Set maximum width for each item */
+        }
+
+        .special-ice-cream img, .ice-cream-sandwich img, .sundae-creation img, .ice-cream-cake img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px; /* Added margin to separate image from text */
+        }
+
+        .special-ice-cream-content, .ice-cream-sandwich-content, .sundae-creation-content, .ice-cream-cake-content {
+            padding: 0 10px; /* Added padding to the content */
+        }
+
+        .choose-button {
+            display: block; /* Make button a block element */
+            margin-top: 10px; /* Added margin to separate button from text */
+            background-color: #ff6600;
+            color: #fff;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .choose-button:hover {
+            background-color: #ff8533;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Special Ice Creams</h1>
+        <button onclick="window.location.href='index.html'">Back to Home Page</button>
+    </header>
+
+    <main class="specials-container">
+        <!-- Special Ice Creams Section -->
+        <section>
+            <h2>Special Ice Creams</h2>
+            <article class="special-ice-cream">
+                <h3>Red Velvet Delight</h3>
+                <img src="images/special1.jpg" alt="Red Velvet Delight Ice Cream">
+                <div class="special-ice-cream-content">
+                    <p>Indulge in the luxurious flavor of red velvet with creamy swirls of vanilla and chocolate.</p>
+                    <button class="choose-button" onclick="addToCart('Red Velvet Delight')">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="special-ice-cream">
+                <h3>Caramel Swirl</h3>
+                <img src="images/special2.jpg" alt="Caramel Swirl Ice Cream">
+                <div class="special-ice-cream-content">
+                    <p>Experience the rich and buttery taste of caramel blended perfectly with smooth ice cream.</p>
+                    <button class="choose-button" onclick="addToCart('Caramel Swirl')">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="special-ice-cream">
+                <h3>Matcha Green Tea</h3>
+                <img src="images/special3.jpg" alt="Matcha Green Tea Ice Cream">
+                <div class="special-ice-cream-content">
+                    <p>Enjoy the unique and refreshing taste of matcha green tea in every scoop.</p>
+                    <button class="choose-button" onclick="addToCart('Matcha Green Tea')">Add to Cart</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- Ice Cream Sandwiches Section -->
+        <section>
+            <h2>Ice Cream Sandwiches</h2>
+            <article class="ice-cream-sandwich">
+                <h3>Chocolate Chip Sandwich</h3>
+                <img src="images/sandwich1.jpg" alt="Chocolate Chip Ice Cream Sandwich">
+                <div class="ice-cream-sandwich-content">
+                    <p>Delicious chocolate chip cookies filled with creamy vanilla ice cream.</p>
+                    <button class="choose-button" onclick="addToCart('Chocolate Chip Sandwich')">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="ice-cream-sandwich">
+                <h3>Double Fudge Sandwich</h3>
+                <img src="../icecream-shop/Images/sandwich2.webp" alt="Double Fudge Ice Cream Sandwich">
+                <div class="ice-cream-sandwich-content">
+                    <p>Rich fudge brownies sandwiching smooth chocolate ice cream.</p>
+                    <button class="choose-button" onclick="addToCart('Double Fudge Sandwich')">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="ice-cream-sandwich">
+                <h3>Oatmeal Raisin Sandwich</h3>
+                <img src="images/sandwich3.jpg" alt="Oatmeal Raisin Ice Cream Sandwich">
+                <div class="ice-cream-sandwich-content">
+                    <p>Chewy oatmeal raisin cookies paired with cinnamon ice cream.</p>
+                    <button class="choose-button" onclick="addToCart('Oatmeal Raisin Sandwich')">Add to Cart</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- Sundae Creations Section -->
+        <section>
+            <h2>Sundae Creations</h2>
+            <article class="sundae-creation">
+                <h3>Banana Split</h3>
+                <img src="images/sundae1.jpg" alt="Banana Split Sundae">
+                <div class="sundae-creation-content">
+                    <p>A classic banana split with scoops of vanilla, chocolate, and strawberry ice cream, topped with whipped cream and cherries.</p>
+                    <button class="choose-button" onclick="addToCart('Banana Split')">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="sundae-creation">
+                <h3>Brownie Sundae</h3>
+                <img src="images/sundae2.jpg" alt="Brownie Sundae">
+                <div class="sundae-creation-content">
+                    <p>Warm brownie topped with vanilla ice cream, hot fudge, and nuts.</p>
+                    <button class="choose-button" onclick="addToCart('Brownie Sundae')">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="sundae-creation">
+                <h3>Caramel Apple Sundae</h3>
+                <img src="images/sundae3.jpg" alt="Caramel Apple Sundae">
+                <div class="sundae-creation-content">
+                    <p>Apple pie filling, vanilla ice cream, and caramel drizzle.</p>
+                    <button class="choose-button" onclick="addToCart('Caramel Apple Sundae')">Add to Cart</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- Ice Cream Cakes Section -->
+        <section>
+            <h2>Ice Cream Cakes</h2>
+            <article class="ice-cream-cake">
+                <h3>Chocolate Ice Cream Cake</h3>
+                <img src="../icecream-shop/Images/cake1.jpg" alt="Chocolate Ice Cream Cake">
+                <div class="ice-cream-cake-content">
+                    <p>Decadent chocolate ice cream layered with chocolate cake and fudge.</p>
+                    <button class="choose-button" onclick="addToCart('Chocolate Ice Cream Cake')">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="ice-cream-cake">
+                <h3>Strawberry Shortcake</h3>
+                <img src="images/cake2.jpg" alt="Strawberry Shortcake Ice Cream Cake">
+                <div class="ice-cream-cake-content">
+                    <p>Layers of strawberry ice cream and vanilla cake with fresh strawberries.</p>
+                    <button class="choose-button" onclick="addToCart('Strawberry Shortcake')">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="ice-cream-cake">
+                <h3>Mint Chocolate Chip Cake</h3>
+                <img src="images/cake3.jpg" alt="Mint Chocolate Chip Ice Cream Cake">
+                <div class="ice-cream-cake-content">
+                    <p>Refreshing mint chocolate chip ice cream with layers of chocolate cake.</p>
+                    <button class="choose-button" onclick="addToCart('Mint Chocolate Chip Cake')">Add to Cart</button>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <button onclick="window.location.href='cart.html'">View Cart</button>
+        <p>&copy; 2024 Sweet Scoops. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function addToCart(item) {
+            // Check if localStorage is supported
+            if (typeof(Storage) !== "undefined") {
+                // Retrieve cart items from localStorage
+                let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+                // Add selected item to cart
+                cartItems.push(item);
+                // Store updated cart items in localStorage
+                localStorage.setItem("cart", JSON.stringify(cartItems));
+                // Alert user that item has been added to cart
+                alert(item + " has been added to your cart!");
+            } else {
+                // If localStorage is not supported, display an error message
+                alert("Sorry, your browser does not support Web Storage. Please upgrade your browser to use this feature.");
+            }
+        }
+    </script>
+</body>
+</html>
