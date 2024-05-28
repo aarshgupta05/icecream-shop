@@ -15,26 +15,27 @@
             color: #ff6600;
         }
 
-        .promotion {
-            position: relative;
-            margin-bottom: 30px;
-            width: calc(50% - 20px); /* Adjusted width to make promotions grid smaller */
-            max-width: 300px; /* Set maximum width for each promotion */
+        .promotions-table {
+            width: 100%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        .promotions-table th, .promotions-table td {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: center;
         }
 
         .promotion img {
             width: 100%;
+            max-width: 150px;
             border-radius: 10px;
-            margin-bottom: 10px; /* Added margin to separate image from text */
-        }
-
-        .promotion-content {
-            padding: 0 10px; /* Added padding to the promotion content */
         }
 
         .choose-button {
-            display: block; /* Make button a block element */
-            margin-top: 10px; /* Added margin to separate button from text */
+            display: block;
+            margin-top: 10px;
             background-color: #ff6600;
             color: #fff;
             padding: 8px 20px;
@@ -42,6 +43,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            text-align: center;
         }
 
         .choose-button:hover {
@@ -55,42 +57,39 @@
         <button onclick="window.location.href='index.html'">Back to Home Page</button>
     </header>
 
-    <main class="promotions-container">
-        <article class="promotion">
-            <h2>Weekend Discount</h2>
-            <img src="images/special1.jpg" alt="Weekend Discount">
-            <div class="promotion-content">
-                <p>Enjoy 20% off all ice cream orders this weekend only!</p>
-                <button class="choose-button" onclick="addToCart('Weekend Discount')">Add to Cart</button>
-            </div>
-        </article>
-
-        <article class="promotion">
-            <h2>Summer Festival</h2>
-            <img src="images/special2.jpg" alt="Summer Festival">
-            <div class="promotion-content">
-                <p>Join us for the Summer Ice Cream Festival on July 15th and enjoy exclusive treats!</p>
-                <button class="choose-button" onclick="addToCart('Summer Festival')">Add to Cart</button>
-            </div>
-        </article>
-
-        <article class="promotion">
-            <h2>Buy One Get One Free</h2>
-            <img src="images/special3.jpg" alt="Buy One Get One Free">
-            <div class="promotion-content">
-                <p>Get two scoops for the price of one on all our classic flavors.</p>
-                <button class="choose-button" onclick="addToCart('Buy One Get One Free')">Add to Cart</button>
-            </div>
-        </article>
-
-        <article class="promotion">
-            <h2>Ice Cream Cakes</h2>
-            <img src="images/special4.jpg" alt="Ice Cream Cakes">
-            <div class="promotion-content">
-                <p>Order our special ice cream cakes and get a free topping of your choice.</p>
-                <button class="choose-button" onclick="addToCart('Ice Cream Cakes')">Add to Cart</button>
-            </div>
-        </article>
+    <main>
+        <table class="promotions-table">
+            <tr>
+                <th>Promotion</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>Weekend Discount</td>
+                <td>Enjoy 20% off all ice cream orders this weekend only!</td>
+                <td><img src="images/special1.jpg" alt="Weekend Discount"></td>
+                <td><button class="choose-button" onclick="addToCart('Weekend Discount')">Add to Cart</button></td>
+            </tr>
+            <tr>
+                <td>Summer Festival</td>
+                <td>Join us for the Summer Ice Cream Festival on July 15th and enjoy exclusive treats!</td>
+                <td><img src="images/special2.jpg" alt="Summer Festival"></td>
+                <td><button class="choose-button" onclick="addToCart('Summer Festival')">Add to Cart</button></td>
+            </tr>
+            <tr>
+                <td>Buy One Get One Free</td>
+                <td>Get two scoops for the price of one on all our classic flavors.</td>
+                <td><img src="images/special3.jpg" alt="Buy One Get One Free"></td>
+                <td><button class="choose-button" onclick="addToCart('Buy One Get One Free')">Add to Cart</button></td>
+            </tr>
+            <tr>
+                <td>Ice Cream Cakes</td>
+                <td>Order our special ice cream cakes and get a free topping of your choice.</td>
+                <td><img src="images/special4.jpg" alt="Ice Cream Cakes"></td>
+                <td><button class="choose-button" onclick="addToCart('Ice Cream Cakes')">Add to Cart</button></td>
+            </tr>
+        </table>
     </main>
 
     <footer>
@@ -100,18 +99,12 @@
 
     <script>
         function addToCart(promotion) {
-            // Check if localStorage is supported
             if (typeof(Storage) !== "undefined") {
-                // Retrieve cart items from localStorage
                 let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-                // Add selected promotion to cart
                 cartItems.push(promotion);
-                // Store updated cart items in localStorage
                 localStorage.setItem("cart", JSON.stringify(cartItems));
-                // Alert user that promotion has been added to cart
                 alert(promotion + " has been added to your cart!");
             } else {
-                // If localStorage is not supported, display an error message
                 alert("Sorry, your browser does not support Web Storage. Please upgrade your browser to use this feature.");
             }
         }
