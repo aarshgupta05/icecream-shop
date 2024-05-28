@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title><%= type %>></title>
+</head>
+<body>
+	<h1>Book Details</h1>
+	<ol>
+		<% 	books.forEach(function (book) { %>
+			<li><h3><b>Title:</b> <%= book.Name %></h3></li>
+			<p><b>Author:</b> <%= book.Author %></p>
+			<br>
+		<% }) %>
+	</ol>
+</body>
+</html>
