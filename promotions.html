@@ -16,21 +16,29 @@
         }
 
         .promotions-table {
-            width: 100%;
-            margin: 20px auto;
-            border-collapse: collapse;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
         }
 
-        .promotions-table th, .promotions-table td {
+        .promotion {
+            flex: 0 0 45%;
+            margin-bottom: 30px;
+            max-width: 300px;
             border: 1px solid #ccc;
-            padding: 15px;
-            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .promotion img {
             width: 100%;
-            max-width: 150px;
-            border-radius: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .promotion-content {
+            padding: 10px;
         }
 
         .choose-button {
@@ -57,39 +65,42 @@
         <button onclick="window.location.href='index.html'">Back to Home Page</button>
     </header>
 
-    <main>
-        <table class="promotions-table">
-            <tr>
-                <th>Promotion</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Action</th>
-            </tr>
-            <tr>
-                <td>Weekend Discount</td>
-                <td>Enjoy 20% off all ice cream orders this weekend only!</td>
-                <td><img src="images/special1.jpg" alt="Weekend Discount"></td>
-                <td><button class="choose-button" onclick="addToCart('Weekend Discount')">Add to Cart</button></td>
-            </tr>
-            <tr>
-                <td>Summer Festival</td>
-                <td>Join us for the Summer Ice Cream Festival on July 15th and enjoy exclusive treats!</td>
-                <td><img src="images/special2.jpg" alt="Summer Festival"></td>
-                <td><button class="choose-button" onclick="addToCart('Summer Festival')">Add to Cart</button></td>
-            </tr>
-            <tr>
-                <td>Buy One Get One Free</td>
-                <td>Get two scoops for the price of one on all our classic flavors.</td>
-                <td><img src="images/special3.jpg" alt="Buy One Get One Free"></td>
-                <td><button class="choose-button" onclick="addToCart('Buy One Get One Free')">Add to Cart</button></td>
-            </tr>
-            <tr>
-                <td>Ice Cream Cakes</td>
-                <td>Order our special ice cream cakes and get a free topping of your choice.</td>
-                <td><img src="images/special4.jpg" alt="Ice Cream Cakes"></td>
-                <td><button class="choose-button" onclick="addToCart('Ice Cream Cakes')">Add to Cart</button></td>
-            </tr>
-        </table>
+    <main class="promotions-table">
+        <article class="promotion">
+            <img src="images/special1.jpg" alt="Weekend Discount">
+            <div class="promotion-content">
+                <h2>Weekend Discount</h2>
+                <p>Enjoy 20% off all ice cream orders this weekend only!</p>
+                <button class="choose-button" onclick="addToCart('Weekend Discount')">Add to Cart</button>
+            </div>
+        </article>
+
+        <article class="promotion">
+            <img src="images/special2.jpg" alt="Summer Festival">
+            <div class="promotion-content">
+                <h2>Summer Festival</h2>
+                <p>Join us for the Summer Ice Cream Festival on July 15th and enjoy exclusive treats!</p>
+                <button class="choose-button" onclick="addToCart('Summer Festival')">Add to Cart</button>
+            </div>
+        </article>
+
+        <article class="promotion">
+            <img src="images/special3.jpg" alt="Buy One Get One Free">
+            <div class="promotion-content">
+                <h2>Buy One Get One Free</h2>
+                <p>Get two scoops for the price of one on all our classic flavors.</p>
+                <button class="choose-button" onclick="addToCart('Buy One Get One Free')">Add to Cart</button>
+            </div>
+        </article>
+
+        <article class="promotion">
+            <img src="images/special4.jpg" alt="Ice Cream Cakes">
+            <div class="promotion-content">
+                <h2>Ice Cream Cakes</h2>
+                <p>Order our special ice cream cakes and get a free topping of your choice.</p>
+                <button class="choose-button" onclick="addToCart('Ice Cream Cakes')">Add to Cart</button>
+            </div>
+        </article>
     </main>
 
     <footer>
