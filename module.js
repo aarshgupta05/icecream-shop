@@ -19,7 +19,7 @@ const fs = require('fs');
 // }
 
 module.exports.loadJSON = function loadJSON(filePath) {
-	filePath = __dirname + "/.." + filePath;
+	filePath = __dirname + filePath;
 	return JSON.parse (
 		fs.existsSync(filePath)
 			? fs.readFileSync(filePath).toString()

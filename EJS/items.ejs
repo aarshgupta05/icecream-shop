@@ -52,20 +52,20 @@
 <body>
     <header>
         <h1>Choose Your <%= type %></h1>
-        <button onclick="window.location.href='../'">Back to Home Page</button>
+        <!-- <button onclick="window.location.href='../'">Back to Home Page</button> -->
     </header>
 
     <main class="flavors-container">
-        <%= items.forEach(function (item) { %>
+        <% items.forEach(item => { %>
             <article class="flavor">
                 <h2><%= item.name %></h2>
-                <img src="../Static/Images/<%= item.src %>" alt="<%= item.name %>">
+                <img src="/Images/<%= item.src %>" alt="<%= item.name %>">
                 <div class="flavor-content">
                     <p><%= item.desc %></p>
                     <button class="choose-button" onclick="addToCart('<%= item.name %>')">Add to Cart</button>
                 </div>
             </article>
-		<%= }) %>
+		<% }) %>
     </main>
 
     <footer>

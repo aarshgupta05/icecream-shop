@@ -20,29 +20,36 @@ app.get('/', (req, res) => {								// Main Page
 });
 
 app.get('/flavours/', (req, res) => {							// Main Flavour Page
-	let flavours = sys.loadJSON('/Data/flavours.json').Books;
-	res.render('items', {'items': flavours});
+	let flavours = sys.loadJSON('/JSON/data.json').Flavours;
+	res.render('items', {'items': flavours, 'type': 'Flavours'});
 });
+
+app.get('/flavours/:id', (req, res) => {						// Individual Flavour Page
+	let f = sys.loadJSON('/JSON/data.json').Flavours[req.params.id];
+	// let f = null
+	// for (let i = 0; i < flavours.length; i++) {
+	// 	if (flavours[i].name == req.params.name){
+	// 		f = flavours[i]
+	// 		break
+	// 	}
+	// }
+
+	if (f == null){
+		console.log('Error, not found');
+		res.send('404! Page not Found<br>Go back to <a href="../">main page</a>?')
+	}
+	console.log(f);
+	res.render('item', {'item': f});
+});
+
 
 // app.get('/books/new/', (req, res) => {						// Add to the JSON file
 // 	res.sendFile(__dirname + "/HTML/new_book.html");
 // });
 
-app.get('/flavours/:name', (req, res) => {						// Individual Flavour Page
-	let flavours = sys.loadJSON('/Data/flavours.json')
-	for (let i = 0; i < flavours.length; i++) {
-		if (flavours[i].name == req.params.name){
-			f = flavours[i]
-			break
-		}
-	}
-
-	console.log(f);
-	res.render('item', {'item': f});
-});
 
 app.get('*', function(req, res){							// 404 Page for GET request
-	res.send('Cannot POST to this page </br>Go back to the <a href="localhost:9000">main page</a> ?')
+	res.send('Cannot GET to this page </br>Go back to the <a href="localhost:9000">main page</a> ?')
 	// res.redirect('/');
 });
 
