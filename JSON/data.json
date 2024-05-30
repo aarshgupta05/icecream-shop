@@ -1,166 +1,165 @@
 {
-    "Flavours": [
-        {
-            "id": 1,
-            "name": "Classic Vanilla",
-            "desc": "Indulge in the timeless classic - smooth and creamy vanilla ice cream.",
-            "src": "flavor1.jpg",
-            "main": true
-        }, 
-        {
-            "id": 2,
-            "name": "Decadent Chocolat",
-            "desc": "Rich and velvety chocolate ice cream for the ultimate chocolate lover.",
-            "src": "flavor2.jpg",
-            "main": true
-        },
-        {
-            "id": 3,
-            "name": "Scrumptious Strawberry",
-            "desc": "Fresh and fruity strawberry ice cream bursting with flavor.",
-            "src": "flavor3.webp",
-            "main": true
-        },
-        {
-            "id": 4,
-            "name": "Minty Fresh",
-            "desc": "Cool and refreshing mint ice cream with real mint leaves.",
-            "src": "flavor4.jpg",
-            "main": false
-        },
-        {
-            "id": 5,
-            "name": "Creamy Coffee",
-            "desc": "Smooth and creamy coffee ice cream made with premium coffee beans.",
-            "src": "flavor5.jpg",
-            "main": false
-        }
-    ],
+	"Flavours": [
+		{
+			"id": 1,
+			"name": "Classic Vanilla",
+			"desc": "Indulge in the timeless classic - smooth and creamy vanilla ice cream.",
+			"src": "flavor1.jpg",
+			"main": true
+		}, 
+		{
+			"id": 2,
+			"name": "Decadent Chocolat",
+			"desc": "Rich and velvety chocolate ice cream for the ultimate chocolate lover.",
+			"src": "flavor2.jpg",
+			"main": true
+		},
+		{
+			"id": 3,
+			"name": "Scrumptious Strawberry",
+			"desc": "Fresh and fruity strawberry ice cream bursting with flavor.",
+			"src": "flavor3.webp",
+			"main": true
+		},
+		{
+			"id": 4,
+			"name": "Minty Fresh",
+			"desc": "Cool and refreshing mint ice cream with real mint leaves.",
+			"src": "flavor4.jpg",
+			"main": false
+		},
+		{
+			"id": 5,
+			"name": "Creamy Coffee",
+			"desc": "Smooth and creamy coffee ice cream made with premium coffee beans.",
+			"src": "flavor5.jpg",
+			"main": false
+		}
+	],
 
-    "Toppings": [
-        {
-            "id": 1,
-            "name": "Sprinkles",
-            "desc": "Add colorful sprinkles to your ice cream for extra fun!",
-            "src": "topping1.jpg",
-            "main": true
-        },
-        {
-            "id": 2,
-            "name": "Nuts",
-            "desc": "Crunchy nuts add a delightful texture to your ice cream.",
-            "src": "topping2.jpg",
-            "main": true
-        },
-        {
-            "id": 3,
-            "name": "Fruit",
-            "desc": "Enjoy the freshness of seasonal fruits as a topping for your ice cream.",
-            "src": "topping3.jpg",
-            "main": true
-        },
-        {
-            "id": 4,
-            "name": "Chocolate Chips",
-            "desc": "Satisfy your chocolate craving with delicious chocolate chips.",
-            "src": "topping4.webp",
-            "main": false
-        },
-        {
-            "id": 5,
-            "name": "Whipped Cream",
-            "desc": "Top off your ice cream with a dollop of fluffy whipped cream.",
-            "src": "topping5.jpg",
-            "main": false
-        }
-    ],
-    
-    "Specials": [
-        {
-            "id": 1,
-            "name": "Red Velvet Delight",
-            "desc": "Indulge in the luxurious flavor of red velvet with creamy swirls of vanilla and chocolate.",
-            "src": "special.jpg",
-            "main": false
-        }, 
-        {
-            "id": 2,
-            "name": "Caramel Swirl",
-            "desc": "Experience the rich and buttery taste of caramel blended perfectly with smooth ice cream.",
-            "src": "specia2.jpg",
-            "main": false
-        },
-        {
-            "id": 3,
-            "name": "Matcha Green Tea",
-            "desc": "Enjoy the unique and refreshing taste of matcha green tea in every scoop.",
-            "src": "specia3.jpg",
-            "main": false
-        },
-        {
-            "id": 4,
-            "name": "Chocolate Chip Sandwich",
-            "desc": "Delicious chocolate chip cookies filled with creamy vanilla ice cream.",
-            "src": "sandwich1.jpg",
-            "main": false
-        },
-        {
-            "id": 5,
-            "name": "Double Fudge Sandwich",
-            "desc": "Rich fudge brownies sandwiching smooth chocolate ice cream.",
-            "src": "sandwich2.webp",
-            "main": true
-        },
-        {
-            "id": 6,
-            "name": "Oatmeal Raisin Sandwich",
-            "desc": "Chewy oatmeal raisin cookies paired with cinnamon ice cream.",
-            "src": "sandwich3.jpg",
-            "main": false
-        },
-        {
-            "id": 7,
-            "name": "Banana Split",
-            "desc": "A classic banana split with scoops of vanilla, chocolate, and strawberry ice cream, topped with whipped cream and cherries.",
-            "src": "sundae1.jpeg",
-            "main": true
-        },
-        {
-            "id": 8,
-            "name": "Brownie Sundae",
-            "desc": "Warm brownie topped with vanilla ice cream, hot fudge, and nuts.",
-            "src": "sundae2.jpg",
-            "main": false
-        },
-        {
-            "id": 9,
-            "name": "Caramel Apple Sundae",
-            "desc": "Apple pie filling, vanilla ice cream, and caramel drizzle.",
-            "src": "sundae3.jpg",
-            "main": false
-        },
-        {
-            "id": 10,
-            "name": "Chocolate Ice Cream Cake",
-            "desc": "Decadent chocolate ice cream layered with chocolate cake and fudge.",
-            "src": "cake1.jpg",
-            "main": true
-        },
-        {
-            "id": 11,
-            "name": "Strawberry Shortcake",
-            "desc": "Layers of strawberry ice cream and vanilla cake with fresh strawberries.",
-            "src": "cake2.jpg",
-            "main": false
-        },
-        {
-            "id": 12,
-            "name": "Mint Chocolate Chip Cake",
-            "desc": "Refreshing mint chocolate chip ice cream with layers of chocolate cake.",
-            "src": "cake3.jpg",
-            "main": false
-        }
-        
-    ]
-    
+	"Toppings": [
+		{
+			"id": 1,
+			"name": "Sprinkles",
+			"desc": "Add colorful sprinkles to your ice cream for extra fun!",
+			"src": "topping1.jpg",
+			"main": true
+		},
+		{
+			"id": 2,
+			"name": "Nuts",
+			"desc": "Crunchy nuts add a delightful texture to your ice cream.",
+			"src": "topping2.jpg",
+			"main": true
+		},
+		{
+			"id": 3,
+			"name": "Fruit",
+			"desc": "Enjoy the freshness of seasonal fruits as a topping for your ice cream.",
+			"src": "topping3.jpg",
+			"main": true
+		},
+		{
+			"id": 4,
+			"name": "Chocolate Chips",
+			"desc": "Satisfy your chocolate craving with delicious chocolate chips.",
+			"src": "topping4.webp",
+			"main": false
+		},
+		{
+			"id": 5,
+			"name": "Whipped Cream",
+			"desc": "Top off your ice cream with a dollop of fluffy whipped cream.",
+			"src": "topping5.jpg",
+			"main": false
+		}
+	],
+	
+	"Specials": [
+		{
+			"id": 1,
+			"name": "Red Velvet Delight",
+			"desc": "Indulge in the luxurious flavor of red velvet with creamy swirls of vanilla and chocolate.",
+			"src": "special.jpg",
+			"main": false
+		}, 
+		{
+			"id": 2,
+			"name": "Caramel Swirl",
+			"desc": "Experience the rich and buttery taste of caramel blended perfectly with smooth ice cream.",
+			"src": "specia2.jpg",
+			"main": false
+		},
+		{
+			"id": 3,
+			"name": "Matcha Green Tea",
+			"desc": "Enjoy the unique and refreshing taste of matcha green tea in every scoop.",
+			"src": "specia3.jpg",
+			"main": false
+		},
+		{
+			"id": 4,
+			"name": "Chocolate Chip Sandwich",
+			"desc": "Delicious chocolate chip cookies filled with creamy vanilla ice cream.",
+			"src": "sandwich1.jpg",
+			"main": false
+		},
+		{
+			"id": 5,
+			"name": "Double Fudge Sandwich",
+			"desc": "Rich fudge brownies sandwiching smooth chocolate ice cream.",
+			"src": "sandwich2.webp",
+			"main": true
+		},
+		{
+			"id": 6,
+			"name": "Oatmeal Raisin Sandwich",
+			"desc": "Chewy oatmeal raisin cookies paired with cinnamon ice cream.",
+			"src": "sandwich3.jpg",
+			"main": false
+		},
+		{
+			"id": 7,
+			"name": "Banana Split",
+			"desc": "A classic banana split with scoops of vanilla, chocolate, and strawberry ice cream, topped with whipped cream and cherries.",
+			"src": "sundae1.jpeg",
+			"main": true
+		},
+		{
+			"id": 8,
+			"name": "Brownie Sundae",
+			"desc": "Warm brownie topped with vanilla ice cream, hot fudge, and nuts.",
+			"src": "sundae2.jpg",
+			"main": false
+		},
+		{
+			"id": 9,
+			"name": "Caramel Apple Sundae",
+			"desc": "Apple pie filling, vanilla ice cream, and caramel drizzle.",
+			"src": "sundae3.jpg",
+			"main": false
+		},
+		{
+			"id": 10,
+			"name": "Chocolate Ice Cream Cake",
+			"desc": "Decadent chocolate ice cream layered with chocolate cake and fudge.",
+			"src": "cake1.jpg",
+			"main": true
+		},
+		{
+			"id": 11,
+			"name": "Strawberry Shortcake",
+			"desc": "Layers of strawberry ice cream and vanilla cake with fresh strawberries.",
+			"src": "cake2.jpg",
+			"main": false
+		},
+		{
+			"id": 12,
+			"name": "Mint Chocolate Chip Cake",
+			"desc": "Refreshing mint chocolate chip ice cream with layers of chocolate cake.",
+			"src": "cake3.jpg",
+			"main": false
+		}
+		
+	]
 }

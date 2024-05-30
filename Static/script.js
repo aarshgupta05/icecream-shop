@@ -1,13 +1,12 @@
-// JavaScript for Dropdown Animation
-document.addEventListener('DOMContentLoaded', function() {
-    var dropdowns = document.querySelectorAll('.dropdown');
 
-    dropdowns.forEach(function(dropdown) {
-        dropdown.addEventListener('click', function() {
-            dropdown.classList.add('animate');
-            setTimeout(function() {
-                dropdown.classList.remove('animate');
-            }, 1000);
-        });
-    });
-});
+// JavaScript to Add Item to Cart
+function addToCart(special) {
+	if (typeof(Storage) !== "undefined") {
+		let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+		cartItems.push(special);
+		localStorage.setItem("cart", JSON.stringify(cartItems));
+		alert(special + " has been added to your cart!");
+	} else {
+		alert("Sorry, your browser does not support Web Storage. Please upgrade your browser to use this feature.");
+	}
+}

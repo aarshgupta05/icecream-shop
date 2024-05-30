@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +7,6 @@
 	<link rel="stylesheet" href="../style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baby+Kruffy&display=swap">
 	<style>
-		header {
-			padding: 10px 20px;
-			margin: 20px;
-		}
-
 		body {
 			font-family: Arial, sans-serif;
 			background-color: #f8f8f8;
@@ -67,20 +61,18 @@
 			background-color: #ff8533;
 		}
 	</style>
-
 </head>
 <body>
 	<header>
 		<h1>Sweet Scoops</h1>
-		<button onclick="window.location.href='../'">Back to Home Page</button>
+		<button onclick="window.location.href='index.html'">Back to Home Page</button>
 	</header>
-	<!-- Header, navigation, etc. -->
 
 	<div class="product-details">
-		<h2 id="product-name"><%= item.name %></h2>
-		<img src="/Images/<%= item.src %>" alt="<%= item.name %>" id="product-image">
-		<p id="product-description"><%= item.desc %></p>
+		<h2 id="product-name">Classic Vanilla</h2>
+		<img src="../Images/flavor1.jpg" alt="Classic Vanilla Ice Cream" id="product-image">
+		<p id="product-description">Rich and velvety vanilla ice cream for the ultimate vanilla lover.</p>
+		<button>Add to Cart</button>
 	</div>
-
 </body>
 </html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cart | Sweet Scoops</title>
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baby+Kruffy&display=swap">
+	<style>
+		/* Your custom styles here */
+		header h1 {
+			font-family: 'Baby Kruffy', cursive;
+			font-size: 3rem;
+			text-align: center;
+			margin-top: 20px;
+			color: #ff6600;
+		}
+
+		.remove-button {
+			background-color: #ff6600;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 5px 10px;
+			cursor: pointer;
+			margin-left: 10px;
+		}
+
+		.remove-button:hover {
+			background-color: #ff8533;
+		}
+
+		.cart-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+
+		.cart-item p {
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Cart</h1>
+		<button onclick="window.location.href='/flavors'">Back to Flavors</button>
+		<button onclick="window.location.href='toppings.html'">Back To Toppings</button>
+		<button onclick="window.location.href='index.html'">Back to Home Page</button>
+	</header>
+
+	<main class="cart-container">
+		<div id="cart-items">
+			<!-- Cart items will be displayed here dynamically -->
+		</div>
+		<button onclick="checkout()">Checkout</button>
+	</main>
+
+	<footer>
+		<p>&copy; 2024 Sweet Scoops. All rights reserved.</p>
+	</footer>
+
+	<script>
+		// Load cart items from localStorage and display them in the cart
+		window.onload = function() {
+			displayCartItems();
+		}
+
+		function aggregateItems(items) {
+			let itemCounts = {};
+			items.forEach(function(item) {
+				if (itemCounts[item]) {
+					itemCounts[item]++;
+				} else {
+					itemCounts[item] = 1;
+				}
+			});
+			return itemCounts;
+		}
+
+		function displayCartItems() {
+			// Retrieve cart items and toppings from localStorage
+			let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+			let selectedToppings = JSON.parse(localStorage.getItem("toppings")) || [];
+			// Aggregate cart items and toppings
+			let aggregatedCartItems = aggregateItems(cartItems);
+			let aggregatedToppings = aggregateItems(selectedToppings);
+			// Get cart-items container
+			let cartItemsContainer = document.getElementById("cart-items");
+			// Clear previous cart items
+			cartItemsContainer.innerHTML = "";
+
+			// Display aggregated cart items
+			Object.keys(aggregatedCartItems).forEach(function(item) {
+				// Create a div to contain each cart item and its remove button
+				let cartItemDiv = document.createElement("div");
+				cartItemDiv.classList.add("cart-item");
+				// Display the item text with quantity
+				cartItemDiv.innerHTML = `<p>${item} x${aggregatedCartItems[item]}</p>`;
+				// Create a remove button for each item
+				let removeButton = document.createElement("button");
+				removeButton.innerText = "Remove";
+				removeButton.classList.add("remove-button"); // Add a class for styling
+				// Set up a click event listener for the remove button
+				removeButton.onclick = function() {
+					// Remove the item from the cart array
+					deleteItem(item, aggregatedCartItems, 'cart');
+				};
+				// Append the remove button to the cart item div
+				cartItemDiv.appendChild(removeButton);
+				// Append the cart item div to the container
+				cartItemsContainer.appendChild(cartItemDiv);
+			});
+
+			// Display aggregated toppings
+			Object.keys(aggregatedToppings).forEach(function(topping) {
+				// Create a div to contain each topping item and its remove button
+				let toppingItemDiv = document.createElement("div");
+				toppingItemDiv.classList.add("cart-item");
+				// Display the topping text with quantity
+				toppingItemDiv.innerHTML = `<p>${topping} x${aggregatedToppings[topping]}</p>`;
+				// Create a remove button for each topping
+				let removeButton = document.createElement("button");
+				removeButton.innerText = "Remove";
+				removeButton.classList.add("remove-button"); // Add a class for styling
+				// Set up a click event listener for the remove button
+				removeButton.onclick = function() {
+					// Remove the topping from the toppings array
+					deleteItem(topping, aggregatedToppings, 'toppings');
+				};
+				// Append the remove button to the topping item div
+				toppingItemDiv.appendChild(removeButton);
+				// Append the topping item div to the container
+				cartItemsContainer.appendChild(toppingItemDiv);
+			});
+		}
+
+		function deleteItem(item, aggregatedItems, storageKey) {
+			let items = JSON.parse(localStorage.getItem(storageKey)) || [];
+			let itemIndex = items.indexOf(item);
+			if (itemIndex > -1) {
+				items.splice(itemIndex, 1);
+				localStorage.setItem(storageKey, JSON.stringify(items));
+				displayCartItems();
+			}
+		}
+
+		function checkout() {
+			// Clear cart items and toppings from localStorage
+			localStorage.removeItem("cart");
+			localStorage.removeItem("toppings");
+			// Refresh the display of cart items
+			displayCartItems();
+			// Redirect to the checkout page (replace "checkout.html" with the actual checkout page)
+			window.location.href = "checkout.html";
+		}
+	</script>
+</body>
+</html>
