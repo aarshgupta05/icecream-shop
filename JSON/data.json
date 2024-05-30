@@ -5,21 +5,21 @@
             "name": "Classic Vanilla",
             "desc": "Indulge in the timeless classic - smooth and creamy vanilla ice cream.",
             "src": "flavor1.jpg",
-            "main": false
+            "main": true
         }, 
         {
             "id": 2,
             "name": "Decadent Chocolat",
             "desc": "Rich and velvety chocolate ice cream for the ultimate chocolate lover.",
             "src": "flavor2.jpg",
-            "main": false
+            "main": true
         },
         {
             "id": 3,
             "name": "Scrumptious Strawberry",
             "desc": "Fresh and fruity strawberry ice cream bursting with flavor.",
             "src": "flavor3.webp",
-            "main": false
+            "main": true
         },
         {
             "id": 4,
@@ -43,26 +43,27 @@
             "name": "Sprinkles",
             "desc": "Add colorful sprinkles to your ice cream for extra fun!",
             "src": "topping1.jpg",
-            "main": false
+            "main": true
         },
         {
             "id": 2,
-            "name": "Chocolate Chips",
-            "desc": "Satisfy your chocolate craving with delicious chocolate chips.",
-            "src": "topping4.webp",
-            "main": false
+            "name": "Nuts",
+            "desc": "Crunchy nuts add a delightful texture to your ice cream.",
+            "src": "topping2.jpg",
+            "main": true
         },
         {
             "id": 3,
-            "name": "Nuts",
-            "desc": "Crunchy nuts add a delightful texture to your ice cream.",
-            "src": "topping2.jpg"
-        },
-        {
-            "id": 4,
             "name": "Fruit",
             "desc": "Enjoy the freshness of seasonal fruits as a topping for your ice cream.",
             "src": "topping3.jpg",
+            "main": true
+        },
+        {
+            "id": 4,
+            "name": "Chocolate Chips",
+            "desc": "Satisfy your chocolate craving with delicious chocolate chips.",
+            "src": "topping4.webp",
             "main": false
         },
         {
@@ -108,7 +109,7 @@
             "name": "Double Fudge Sandwich",
             "desc": "Rich fudge brownies sandwiching smooth chocolate ice cream.",
             "src": "sandwich2.webp",
-            "main": false
+            "main": true
         },
         {
             "id": 6,
@@ -122,7 +123,7 @@
             "name": "Banana Split",
             "desc": "A classic banana split with scoops of vanilla, chocolate, and strawberry ice cream, topped with whipped cream and cherries.",
             "src": "sundae1.jpeg",
-            "main": false
+            "main": true
         },
         {
             "id": 8,
@@ -143,7 +144,7 @@
             "name": "Chocolate Ice Cream Cake",
             "desc": "Decadent chocolate ice cream layered with chocolate cake and fudge.",
             "src": "cake1.jpg",
-            "main": false
+            "main": true
         },
         {
             "id": 11,
