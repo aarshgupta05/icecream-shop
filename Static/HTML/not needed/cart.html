@@ -45,9 +45,9 @@
 <body>
 	<header>
 		<h1>Cart</h1>
-		<button onclick="window.location.href='/flavors'">Back to Flavors</button>
-		<button onclick="window.location.href='toppings.html'">Back To Toppings</button>
-		<button onclick="window.location.href='index.html'">Back to Home Page</button>
+		<button onclick="window.location.href='flavors'">Back to Flavors</button>
+		<button onclick="window.location.href='toppings'">Back To Toppings</button>
+		<button onclick="window.location.href='../'">Back to Home Page</button>
 	</header>
 
 	<main class="cart-container">
@@ -152,8 +152,8 @@
 			localStorage.removeItem("toppings");
 			// Refresh the display of cart items
 			displayCartItems();
-			// Redirect to the checkout page (replace "checkout.html" with the actual checkout page)
-			window.location.href = "checkout.html";
+			// Redirect to the checkout page (replace "checkout" with the actual checkout page)
+			window.location.href = "checkout";
 		}
 	</script>
 </body>
