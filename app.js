@@ -39,7 +39,7 @@ app.get('/:type/', (req, res) => {							// Main Flavour/Toppings/Specials/etc P
 
 	if (data == null) {
 		console.log('Error, not found');
-		return res.send('404! Page not Found<br>Go back to <a href="http://localhost:9000">main page</a>?');
+		return res.sendFile(__dirname + '/Static/HTML/404.html');
 	}
 	return res.render('items', {'items': data, 'type': type});
 });
@@ -67,7 +67,7 @@ app.get('/:type/:id', (req, res) => {						// All Products Page
 
 	if (f == null){
 		console.log('Error, not found');
-		return res.send('404! Page not Found<br>Go back to <a href="http://localhost:9000">main page</a>?');
+		return res.sendFile(__dirname + '/Static/HTML/404.html');
 	}
 	
 	return res.render('item', {'item': f});
@@ -86,11 +86,13 @@ app.get('/:type/:id', (req, res) => {						// All Products Page
 
 
 app.get('*', function(req, res){							// 404 Page for GET request
+	return res.sendFile(__dirname + '/Static/HTML/404.html');
 	return res.send('Cannot GET to this page </br>Go back to the <a href="../">main page</a> ?');
 	// return res.redirect('/');
 });
 
 app.post('*', function(req, res){							// 404 Page for POST request
+	return res.sendFile(__dirname + '/Static/HTML/404.html');
 	return res.send('Cannot POST to this page </br>Go back to the <a href="../">main page</a> ?');
 	// return res.redirect('/');
 });
