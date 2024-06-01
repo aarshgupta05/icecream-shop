@@ -207,10 +207,10 @@ footer {
 	}
 }
 
-/* Flavors Page Styles */
+/* flavours Page Styles */
 
-/* Container for all flavors */
-.flavors-container {
+/* Container for all flavours */
+.flavours-container {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
@@ -268,7 +268,7 @@ button:hover {
 	background-color: #ff8533;
 }
 
-/* Additional styling for the "Back to Flavors" button in the header */
+/* Additional styling for the "Back to flavours" button in the header */
 header button {
 	margin-right: 20px; /* Add margin to create spacing between "Back" and "Your Cart" buttons */
 }

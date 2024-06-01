@@ -51,10 +51,12 @@
 	</header>
 
 	<main class="cart-container">
-		<div id="cart-items">
-			<!-- Cart items will be displayed here dynamically -->
-		</div>
-		<button onclick="checkout()">Checkout</button>
+		<form action="/checkout" method="post">
+			<div id="cart-items">
+				<!-- Cart items will be displayed here dynamically -->
+			</div>
+			<button type="submit">Checkout</button>
+		</form>
 	</main>
 
 	<footer>
@@ -80,59 +82,41 @@
 		}
 
 		function displayCartItems() {
-			// Retrieve cart items and toppings from localStorage
+			// Retrieve cart items from localStorage and aggregate them
 			let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-			let selectedToppings = JSON.parse(localStorage.getItem("toppings")) || [];
-			// Aggregate cart items and toppings
 			let aggregatedCartItems = aggregateItems(cartItems);
-			let aggregatedToppings = aggregateItems(selectedToppings);
-			// Get cart-items container
+
+			// Get the cart-items container
 			let cartItemsContainer = document.getElementById("cart-items");
-			// Clear previous cart items
 			cartItemsContainer.innerHTML = "";
 
-			// Display aggregated cart items
+			// Display Cart items
 			Object.keys(aggregatedCartItems).forEach(function(item) {
-				// Create a div to contain each cart item and its remove button
+
+				// Create a div to contain each cart item
 				let cartItemDiv = document.createElement("div");
 				cartItemDiv.classList.add("cart-item");
-				// Display the item text with quantity
 				cartItemDiv.innerHTML = `<p>${item} x${aggregatedCartItems[item]}</p>`;
-				// Create a remove button for each item
+
+				// Create an input box (hidden) to store the item and quantity
+				// Helps when we POST the data to /checkout
+				let inp = document.createElement("input");
+				inp.hidden = true;
+				inp.name = item;
+				inp.value = aggregatedCartItems[item];
+				cartItemDiv.appendChild(inp);
+
+				// Create a button to remove the item or decrease its quantity by 1
 				let removeButton = document.createElement("button");
 				removeButton.innerText = "Remove";
-				removeButton.classList.add("remove-button"); // Add a class for styling
-				// Set up a click event listener for the remove button
-				removeButton.onclick = function() {
-					// Remove the item from the cart array
-					deleteItem(item, aggregatedCartItems, 'cart');
-				};
-				// Append the remove button to the cart item div
+				removeButton.classList.add("remove-button");
+
+				// Set up a click event listener for the button
+				removeButton.onclick = function() {deleteItem(item, aggregatedCartItems, 'cart')};
 				cartItemDiv.appendChild(removeButton);
+
 				// Append the cart item div to the container
 				cartItemsContainer.appendChild(cartItemDiv);
-			});
-
-			// Display aggregated toppings
-			Object.keys(aggregatedToppings).forEach(function(topping) {
-				// Create a div to contain each topping item and its remove button
-				let toppingItemDiv = document.createElement("div");
-				toppingItemDiv.classList.add("cart-item");
-				// Display the topping text with quantity
-				toppingItemDiv.innerHTML = `<p>${topping} x${aggregatedToppings[topping]}</p>`;
-				// Create a remove button for each topping
-				let removeButton = document.createElement("button");
-				removeButton.innerText = "Remove";
-				removeButton.classList.add("remove-button"); // Add a class for styling
-				// Set up a click event listener for the remove button
-				removeButton.onclick = function() {
-					// Remove the topping from the toppings array
-					deleteItem(topping, aggregatedToppings, 'toppings');
-				};
-				// Append the remove button to the topping item div
-				toppingItemDiv.appendChild(removeButton);
-				// Append the topping item div to the container
-				cartItemsContainer.appendChild(toppingItemDiv);
 			});
 		}
 
@@ -144,16 +128,6 @@
 				localStorage.setItem(storageKey, JSON.stringify(items));
 				displayCartItems();
 			}
-		}
-
-		function checkout() {
-			// Clear cart items and toppings from localStorage
-			localStorage.removeItem("cart");
-			localStorage.removeItem("toppings");
-			// Refresh the display of cart items
-			displayCartItems();
-			// Redirect to the checkout page (replace "checkout" with the actual checkout page)
-			window.location.href = "checkout";
 		}
 	</script>
 </body>

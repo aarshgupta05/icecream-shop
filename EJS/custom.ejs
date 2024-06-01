@@ -3,18 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Checkout | Sweet Scoops</title>
+	<title><%= title %> | Sweet Scoops</title>
 	<link rel="stylesheet" href="/style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baby+Kruffy&display=swap">
 </head>
 <body>
 	<header>
-		<h1>Checkout</h1>
+		<h1><%= heading %></h1>
 	</header>
 
 	<main>
-		<p>Thank you for your order!</p>
-		<!-- You can add more checkout information here -->
+		<p><%= para %></p>
 	</main>
 
 	<footer>
@@ -23,10 +22,9 @@
 	</footer>
 </body>
 <script>
-	localStorage.removeItem("cart");
-	localStorage.removeItem("toppings");
-
-	alert('Your order has been placed and will be delivered by tomorrow')
-	window.location.href = '../'
+	if ('<%= alert %>') {
+		alert('<%= alert %>')
+	}
+	window.location.href = '<%= redirect %>'
 </script>
 </html>

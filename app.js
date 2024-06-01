@@ -1,41 +1,92 @@
 const path = require('path');
 const sys = require('./module.js');
 
+// Used for routing the different pages
 const express = require('express');
-const app = express();										// Used for routing the different pages
+const app = express();
 
+// Important for POST req
 const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended:true }));			// Important for POST req
+app.use(bodyParser.urlencoded({ extended:true }));
 
-const logger = require('morgan');							// Logs the different pages accessed
-app.use(logger('dev'));										// Set up the Logger
+// Logs the different pages accessed
+const logger = require('morgan');
+app.use(logger('dev'));
 
+// Set up the EJS files
 app.set('views', path.join(__dirname, 'EJS'));
-app.set('view engine', 'ejs');								// Set up the EJS files
+app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(__dirname, "Static")));	// Static files
+// Static files
+app.use(express.static(path.join(__dirname, "Static")));
 
-app.get('/', (req, res) => {								// Main Page
+// Main Page
+app.get('/', (req, res) => {
 	return res.sendFile(__dirname + '/Static/HTML/index.html');
 });
 
-app.get('/about/', (req, res) => {							// About Page
+// About Page
+app.get('/about/', (req, res) => {
 	return res.sendFile(__dirname + '/Static/HTML/about.html');
 });
 
-app.get('/promotions/', (req, res) => {							// Promotions Page
+// Promotions Page
+app.get('/promotions/', (req, res) => {
 	return res.sendFile(__dirname + '/Static/HTML/promotions.html');
 });
 
-// app.get('/cart/', (req, res) => {							// Cart Page
-// 	return res.render('cart');
-// });
+// Cart Page
+app.get('/cart/', (req, res) => {
+	return res.render('cart');
+});
 
-app.get('/:type/', (req, res) => {							// Main Flavour/Toppings/Specials/etc Page
+// Fake Checkout Page
+app.get('/checkout/', (req, res) => {
+	res.redirect('../cart')
+});
+
+// Checkout Page
+app.post('/checkout/', (req, res) => {
+	orders = sys.loadJSON('orders');
+
+	order = req.body
+	order.Status = false
+	order.Date = sys.date()
+
+	sys.saveJSON('orders', orders.concat(order))
+
+	return res.sendFile(__dirname + '/Static/HTML/checkout.html');
+});
+
+// GET Contact Page
+app.get('/contact/', (req, res) => {
+	return res.sendFile(__dirname + '/Static/HTML/contact.html');
+});
+
+// POST Contact Page
+app.post('/contact/', (req, res) => {
+	c = req.body
+	c.date = sys.date()
+
+	contacts = sys.loadJSON('contact')
+	sys.saveJSON('contact', contacts.concat(c))
+
+	// return res.send('Done, <a href="../">Go back</a>?')
+	return res.render('custom', {
+		'title': 'Contact Us',
+		'heading': 'Thank you messaging us!',
+		'para': 'We have definitely recieved you message and we will be getting back to you as soon as possible<br>PLease hold tight!',
+		'alert': 'Your query has been submitted and we will be contacting you shortly',
+		'redirect': '../',
+	})
+});
+
+// Main Flavour/Toppings/Specials/etc Page
+app.get('/:type/', (req, res) => {
 	let type = req.params.type
 	type = type.charAt(0).toUpperCase() + type.slice(1);
 
-	let data = sys.loadJSON('/JSON/data.json')[type];
+	let data = sys.loadJSON('data')[type];
 
 	if (data == null) {
 		console.log('Error, not found');
@@ -44,26 +95,12 @@ app.get('/:type/', (req, res) => {							// Main Flavour/Toppings/Specials/etc P
 	return res.render('items', {'items': data, 'type': type});
 });
 
-// app.get('/flavours/', (req, res) => {							// Main Flavour Page
-// 	let flavours = sys.loadJSON('/JSON/data.json').Flavours;
-// 	return res.render('items', {'items': flavours, 'type': 'Flavours'});
-// });
-
-// app.get('/toppings/', (req, res) => {							// Main Toppings Page
-// 	let toppings = sys.loadJSON('/JSON/data.json').Toppings;
-// 	return res.render('items', {'items': toppings, 'type': 'Toppings'});
-// });
-
-// app.get('/specials/', (req, res) => {							// Main Specials Page
-// 	let flavours = sys.loadJSON('/JSON/data.json').Specials;
-// 	return res.render('items', {'items': specials, 'type': 'Specials'});
-// });
-
-app.get('/:type/:id', (req, res) => {						// All Products Page
+// All Products Page
+app.get('/:type/:id', (req, res) => {
 	let type = req.params.type
 	type = type.charAt(0).toUpperCase() + type.slice(1);
 
-	let f = sys.loadJSON('/JSON/data.json')[type][req.params.id];
+	let f = sys.loadJSON('data')[type][req.params.id];
 
 	if (f == null){
 		console.log('Error, not found');
@@ -73,29 +110,22 @@ app.get('/:type/:id', (req, res) => {						// All Products Page
 	return res.render('item', {'item': f});
 });
 
-// app.get('/flavours/:id', (req, res) => {						// Individual Flavour Page
-// 	let f = sys.loadJSON('/JSON/data.json').Flavours[req.params.id];
 
-// 	if (f == null){
-// 		console.log('Error, not found');
-// 		return res.send('404! Page not Found<br>Go back to <a href="http://localhost:9000">main page</a>?');
-// 	}
-	
-// 	return res.render('item', {'item': f});
-// });
-
-
-app.get('*', function(req, res){							// 404 Page for GET request
+// 404 Page for GET request
+app.get('*', function(req, res){
 	return res.sendFile(__dirname + '/Static/HTML/404.html');
 	return res.send('Cannot GET to this page </br>Go back to the <a href="../">main page</a> ?');
 	// return res.redirect('/');
 });
 
-app.post('*', function(req, res){							// 404 Page for POST request
+// 404 Page for POST request
+app.post('*', function(req, res){
 	return res.sendFile(__dirname + '/Static/HTML/404.html');
 	return res.send('Cannot POST to this page </br>Go back to the <a href="../">main page</a> ?');
 	// return res.redirect('/');
 });
 
-app.listen(9000);											// Starting the Server
-// http://localhost:9000
+// Starts the Server
+app.listen(9000, () => {
+    console.log(`Server is running on port http://localhost:9000`);
+});
