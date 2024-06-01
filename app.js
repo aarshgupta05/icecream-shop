@@ -40,23 +40,45 @@ app.get('/cart/', (req, res) => {
 	return res.render('cart');
 });
 
-app.get('/checkout', (req, res) => {
+// Fake Checkout Page
+app.get('/checkout/', (req, res) => {
 	res.redirect('../cart')
 });
 
 // Checkout Page
 app.post('/checkout/', (req, res) => {
-	orders = sys.loadJSON('orders').Orders;
+	orders = sys.loadJSON('orders');
 
-	let date = sys.date()
 	order = req.body
-	order['Status'] = false
-	order['Date'] = date
+	order.Status = false
+	order.Date = sys.date()
 
-	orders.push(order)
-	sys.saveJSON('orders', {Orders: orders})
+	sys.saveJSON('orders', orders.concat(order))
 
 	return res.sendFile(__dirname + '/Static/HTML/checkout.html');
+});
+
+// GET Contact Page
+app.get('/contact/', (req, res) => {
+	return res.sendFile(__dirname + '/Static/HTML/contact.html');
+});
+
+// POST Contact Page
+app.post('/contact/', (req, res) => {
+	c = req.body
+	c.date = sys.date()
+
+	contacts = sys.loadJSON('contact')
+	sys.saveJSON('contact', contacts.concat(c))
+
+	// return res.send('Done, <a href="../">Go back</a>?')
+	return res.render('custom', {
+		'title': 'Contact Us',
+		'heading': 'Thank you messaging us!',
+		'para': 'We have definitely recieved you message and we will be getting back to you as soon as possible<br>PLease hold tight!',
+		'alert': 'Your query has been submitted and we will be contacting you shortly',
+		'redirect': '../',
+	})
 });
 
 // Main Flavour/Toppings/Specials/etc Page
