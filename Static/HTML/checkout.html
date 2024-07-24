@@ -23,10 +23,12 @@
 	</footer>
 </body>
 <script>
-	localStorage.removeItem("cart");
-	localStorage.removeItem("toppings");
+		window.onload = function() {
+			localStorage.removeItem("cart");
+			localStorage.removeItem("toppings");
 
-	alert('Your order has been placed and will be delivered by tomorrow')
-	window.location.href = '../'
+			alert('Your order has been placed and will be delivered by tomorrow')
+			window.location.href = '../'
+		}
 </script>
 </html>

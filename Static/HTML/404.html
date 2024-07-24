@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found | Sweet Scoops</title>
+    <link rel="stylesheet" href="Styles/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baby+Kruffy&display=swap">
+    <style>
+        body {
+            background-color: #fff5e1;
+            color: #ff6600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 20px;
+            padding: 50px;
+            background-color: #fff5e1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            width: 50%;
+            max-width: 600px;
+            margin-right: 30px;
+        }
+
+        .text-container {
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            font-family: 'Baby Kruffy', cursive;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff6600;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #ff8533;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            img {
+                width: 100%;
+                margin: 0 0 30px 0;
+            }
+
+            .text-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/images/404-ice-cream.jpg" alt="Ice Cream Image">
+        <div class="text-container">
+            <h1>Oops!</h1>
+            <p>We can't seem to find the page you're looking for.</p>
+            <a href="http://localhost:9000">Back to Home Page</a>
+        </div>
+    </div>
+</body>
+</html>
