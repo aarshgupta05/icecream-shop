@@ -22,6 +22,8 @@ app.use(express.static(path.join(__dirname, "Static")));
 
 // Main Page
 app.get('/', (req, res) => {
+	data = sys.loadJSON('data')
+	return res.render('index', {'data': data});
 	return res.sendFile(__dirname + '/Static/HTML/index.html');
 });
 
@@ -66,16 +68,27 @@ app.get('/contact/', (req, res) => {
 // POST Contact Page
 app.post('/contact/', (req, res) => {
 	c = req.body
-	c.date = sys.date()
+	console.log(c);
+	data = sys.loadJSON('contact');
+	if (c.type == 'feedback') {
+		c.date = sys.date()
+		delete c.type;
+		data.Contacts.concat(c)
+	} else {
+		delete c.type;
+		data.Newsletter.push(c.email)
+		console.log(data);
+	}
+
 
 	contacts = sys.loadJSON('contact')
-	sys.saveJSON('contact', contacts.concat(c))
+	sys.saveJSON('contact', data)
 
 	// return res.send('Done, <a href="../">Go back</a>?')
 	return res.render('custom', {
 		'title': 'Contact Us',
 		'heading': 'Thank you messaging us!',
-		'para': 'We have definitely recieved you message and we will be getting back to you as soon as possible<br>PLease hold tight!',
+		'para': 'We have recieved you message and we will be getting back to you as soon as possible<br>PLease hold tight!',
 		'alert': 'Your query has been submitted and we will be contacting you shortly',
 		'redirect': '../',
 	})
@@ -89,7 +102,7 @@ app.get('/:type/', (req, res) => {
 	let data = sys.loadJSON('data')[type];
 
 	if (data == null) {
-		console.log('Error, not found');
+		console.log('LOL Error, not found');
 		return res.send('404! Page not Found<br>Go back to <a href="http://localhost:9000">main page</a>?');
 	}
 	return res.render('items', {'items': data, 'type': type});
@@ -103,7 +116,7 @@ app.get('/:type/:id', (req, res) => {
 	let f = sys.loadJSON('data')[type][req.params.id];
 
 	if (f == null){
-		console.log('Error, not found');
+		console.log('LOL Error, not found');
 		return res.send('404! Page not Found<br>Go back to <a href="http://localhost:9000">main page</a>?');
 	}
 	
@@ -113,13 +126,13 @@ app.get('/:type/:id', (req, res) => {
 
 // 404 Page for GET request
 app.get('*', function(req, res){
-	return res.send('Cannot GET to this page </br>Go back to the <a href="../">main page</a> ?');
+	return res.status(404).send('Cannot POST to this page </br>Go back to the <a href="../">main page</a> ?');
 	// return res.redirect('/');
-});
+}); 
 
 // 404 Page for POST request
 app.post('*', function(req, res){
-	return res.send('Cannot POST to this page </br>Go back to the <a href="../">main page</a> ?');
+	return res.status(404).send('Cannot POST to this page </br>Go back to the <a href="../">main page</a> ?');
 	// return res.redirect('/');
 });
 

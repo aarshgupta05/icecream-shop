@@ -78,8 +78,9 @@
 			<p>If you have any questions, suggestions, or feedback, feel free to get in touch with us using the form below or through our contact details. Your opinion matters to us!</p>
 		</section>
 
-		<section class="contact-section">
+		<section id="feedback" class="contact-section">
 			<form class="contact-form" method="POST">
+				<input type="hidden" name="type" value="feedback">
 				<input type="text" name="name" placeholder="Your Name" required>
 				<input type="email" name="email" placeholder="Your Email" required>
 				<textarea name="message" rows="5" placeholder="Your Message" style="resize: none" required></textarea>
@@ -87,6 +88,16 @@
 			</form>
 		</section>
 
+		<section id="newsletter" class="contact-section">
+			<form class="contact-form" method="POST">
+				<input type="hidden" name="type" value="newsletter">
+				<h2 id="newsletterscroll">Stay Updated!</h2>
+				<p>Sign up for our newsletter to receive updates on new flavours, promotions, and more.</p>
+				<input type="email" name="email" placeholder="Enter your email">
+				<button type="submit">Subscribe</button>
+			</form>
+		</section>
+	  
 		<section class="contact-section">
 			<h2>Our Contact Details</h2>
 			<p>Email: contact@sweetscoops.com</p>
