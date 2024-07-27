@@ -1,134 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cart | Sweet Scoops</title>
-	<link rel="stylesheet" href="../style.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baby+Kruffy&display=swap">
-	<style>
-		/* Your custom styles here */
-		header h1 {
-			font-family: 'Baby Kruffy', cursive;
-			font-size: 3rem;
-			text-align: center;
-			margin-top: 20px;
-			color: #ff6600;
-		}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | Sweet Scoops</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baby+Kruffy&display=swap">
+  <style>
+    header h1 {
+      font-family: 'Baby Kruffy', cursive;
+      font-size: 3rem;
+      text-align: center;
+      margin-top: 20px;
+      color: #ff6600;
+    }
 
-		.remove-button {
-			background-color: #ff6600;
-			color: #fff;
-			border: none;
-			border-radius: 5px;
-			padding: 5px 10px;
-			cursor: pointer;
-			margin-left: 10px;
-		}
+    .remove-button {
+      background-color: #ff6600;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
 
-		.remove-button:hover {
-			background-color: #ff8533;
-		}
+    .remove-button:hover {
+      background-color: #ff8533;
+    }
 
-		.cart-item {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			margin-bottom: 10px;
-		}
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
 
-		.cart-item p {
-			margin: 0;
-		}
-	</style>
+    .cart-item p {
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
-	<header>
-		<h1>Cart</h1>
-		<button onclick="window.location.href='flavours'">Back to flavours</button>
-		<button onclick="window.location.href='toppings'">Back To Toppings</button>
-		<button onclick="window.location.href='../'">Back to Home Page</button>
-	</header>
+  <header>
+    <h1>Cart</h1>
+    <button onclick="window.location.href='flavours'">Back to flavours</button>
+    <button onclick="window.location.href='toppings'">Back To Toppings</button>
+    <button onclick="window.location.href='../'">Back to Home Page</button>
+  </header>
 
-	<main class="cart-container">
-		<form action="/checkout" method="post">
-			<div id="cart-items">
-				<!-- Cart items will be displayed here dynamically -->
-			</div>
-			<button type="submit">Checkout</button>
-		</form>
-	</main>
+  <main class="cart-container">
+    <form action="/checkout" method="post">
+      <div id="cart-items">
+        <!-- Cart items will be displayed here dynamically -->
+      </div>
+      <button type="submit">Checkout</button>
+    </form>
+  </main>
 
-	<footer>
-		<p>&copy; 2024 Sweet Scoops. All rights reserved.</p>
-	</footer>
+  <footer>
+    <p>&copy; 2024 Sweet Scoops. All rights reserved.</p>
+  </footer>
 
-	<script>
-		// Load cart items from localStorage and display them in the cart
-		window.onload = function() {
-			displayCartItems();
-		}
+  <script>
+    // Load cart items from localStorage and display them in the cart
+    window.onload = function() {
+      displayCartItems();
+    }
 
-		function aggregateItems(items) {
-			let itemCounts = {};
-			items.forEach(function(item) {
-				if (itemCounts[item]) {
-					itemCounts[item]++;
-				} else {
-					itemCounts[item] = 1;
-				}
-			});
-			return itemCounts;
-		}
+    function aggregateItems(items) {
+      let itemCounts = {};
+      items.forEach(function(item) {
+        if (itemCounts[item]) {
+          itemCounts[item]++;
+        } else {
+          itemCounts[item] = 1;
+        }
+      });
+      return itemCounts;
+    }
 
-		function displayCartItems() {
-			// Retrieve cart items from localStorage and aggregate them
-			let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-			let aggregatedCartItems = aggregateItems(cartItems);
+    function displayCartItems() {
+      // Retrieve cart items from localStorage and aggregate them
+      let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+      let aggregatedCartItems = aggregateItems(cartItems);
 
-			// Get the cart-items container
-			let cartItemsContainer = document.getElementById("cart-items");
-			cartItemsContainer.innerHTML = "";
+      // Get the cart-items container
+      let cartItemsContainer = document.getElementById("cart-items");
+      cartItemsContainer.innerHTML = "";
 
-			// Display Cart items
-			Object.keys(aggregatedCartItems).forEach(function(item) {
+      // Display Cart items
+      Object.keys(aggregatedCartItems).forEach(function(item) {
+        // Create a div to contain each cart item
+        let cartItemDiv = document.createElement("div");
+        cartItemDiv.classList.add("cart-item");
+        cartItemDiv.innerHTML = `<p>${item} x${aggregatedCartItems[item]}</p>`;
 
-				// Create a div to contain each cart item
-				let cartItemDiv = document.createElement("div");
-				cartItemDiv.classList.add("cart-item");
-				cartItemDiv.innerHTML = `<p>${item} x${aggregatedCartItems[item]}</p>`;
+        // Create an input box (hidden) to store the item and quantity
+        // Helps when we POST the data to /checkout
+        let inp = document.createElement("input");
+        inp.hidden = true;
+        inp.name = item;
+        inp.value = aggregatedCartItems[item];
+        cartItemDiv.appendChild(inp);
 
-				// Create an input box (hidden) to store the item and quantity
-				// Helps when we POST the data to /checkout
-				let inp = document.createElement("input");
-				inp.hidden = true;
-				inp.name = item;
-				inp.value = aggregatedCartItems[item];
-				cartItemDiv.appendChild(inp);
+        // Create a button to remove the item or decrease its quantity by 1
+        let removeButton = document.createElement("button");
+        removeButton.innerText = "Remove";
+        removeButton.classList.add("remove-button");
 
-				// Create a button to remove the item or decrease its quantity by 1
-				let removeButton = document.createElement("button");
-				removeButton.innerText = "Remove";
-				removeButton.classList.add("remove-button");
+        // Set up a click event listener for the button
+        removeButton.onclick = function() {deleteItem(item)};
+        cartItemDiv.appendChild(removeButton);
 
-				// Set up a click event listener for the button
-				removeButton.onclick = function() {deleteItem(item, aggregatedCartItems, 'cart')};
-				cartItemDiv.appendChild(removeButton);
+        // Append the cart item div to the container
+        cartItemsContainer.appendChild(cartItemDiv);
+      });
+    }
 
-				// Append the cart item div to the container
-				cartItemsContainer.appendChild(cartItemDiv);
-			});
-		}
-
-		function deleteItem(item, aggregatedItems, storageKey) {
-			let items = JSON.parse(localStorage.getItem(storageKey)) || [];
-			let itemIndex = items.indexOf(item);
-			if (itemIndex > -1) {
-				items.splice(itemIndex, 1);
-				localStorage.setItem(storageKey, JSON.stringify(items));
-				displayCartItems();
-			}
-		}
-	</script>
+    function deleteItem(item) {
+      let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+      let itemIndex = cartItems.indexOf(item);
+      if (itemIndex > -1) {
+        cartItems.splice(itemIndex, 1);
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+        displayCartItems();
+      }
+    }
+  </script>
 </body>
 </html>

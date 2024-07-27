@@ -22,6 +22,16 @@
 			max-width: 300px; /* Set maximum width for each flavor */
 		}
 		
+		.legend {
+			position: relative;
+			display: flex;
+			margin-bottom: 30px;
+		}
+
+		.legend h2 {
+			flex: 20%;
+		}
+		
 		.flavor img {
 			width: 100%;
 			border-radius: 10px;
@@ -53,6 +63,12 @@
 	<header>
 		<h1>Choose Your <%= type %></h1>
 		<button onclick="window.location.href='../'">Back to Home Page</button>
+
+		<article class="legend">
+			<h2>🎩:- Special</h2>
+			<h2>🥚:- Contains Egg</h2>
+			<h2>🍾:- Contains Alcohol</h2>
+		</article>
 	</header>
 
 	<main class="flavours-container">
