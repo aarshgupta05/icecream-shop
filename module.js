@@ -1,5 +1,5 @@
-const { log } = require('console');
 const fs = require('fs');
+const path = require('path');
 
 
 /**
@@ -46,5 +46,9 @@ module.exports.date = function getDate() {
     const seconds = ('0' + date.getSeconds()).slice(-2);
 
     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+}
+
+module.exports.join = function join(file) {
+    return path.join(__dirname + '/Static/HTML/' + file + '.html')
 }
 

@@ -9,13 +9,17 @@
 	"author": "Aadil, Aarsh",
 	"license": "ISC",
 	"dependencies": {
+		"bcrypt": "^5.1.1",
 		"body-parser": "^1.20.2",
+		"cookie-parser": "^1.4.6",
 		"ejs": "^3.1.10",
 		"express": "^4.19.2",
 		"fs": "^0.0.1-security",
+		"jsonwebtoken": "^9.0.2",
 		"mongodb": "^6.8.0",
 		"mongoose": "^8.5.1",
 		"morgan": "^1.10.0",
-		"nodemon": "^3.1.4"
+		"nodemon": "^3.1.4",
+		"validator": "^13.12.0"
 	}
 }

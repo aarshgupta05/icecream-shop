@@ -1,4 +1,4 @@
-const sys = require('./module.js');
+const sys = require('../module');
 
 module.exports.type_get = (req, res) => {
 	let type = req.params.type

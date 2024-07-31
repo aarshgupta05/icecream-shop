@@ -1,4 +1,5 @@
-const sys = require('./module.js');
+const path = require('path');
+const sys = require('../module');
 
 module.exports.main = (req, res) => {
 	data = sys.loadJSON('data')
@@ -6,11 +7,13 @@ module.exports.main = (req, res) => {
 }
 
 module.exports.about = (req, res) => {
-	return res.sendFile(__dirname + '/Static/HTML/about.html');
+	return res.sendFile(sys.join('about'));
+	return res.sendFile(path.join(__dirname + '/../Static/HTML/about.html'));
 }
 
 module.exports.promotions = (req, res) => {
-	return res.sendFile(__dirname + '/Static/HTML/promotions.html');
+	return res.sendFile(sys.join('promotions'));
+	return res.sendFile(path.join(__dirname + '/../Static/HTML/promotions.html'));
 }
 
 module.exports.cart = (req, res) => {
@@ -30,11 +33,13 @@ module.exports.checkout_post = (req, res) => {
 
 	sys.saveJSON('orders', orders.concat(order))
 
-	return res.sendFile(__dirname + '/Static/HTML/checkout.html');
+	return res.sendFile(sys.join('checkout'));
+	return res.sendFile(path.join(__dirname + '/../Static/HTML/checkout.html'));
 }
 
 module.exports.contact_get = (req, res) => {
-	return res.sendFile(__dirname + '/Static/HTML/contact.html');
+	return res.sendFile(sys.join('contact'));
+	return res.sendFile(path.join(__dirname + '/../Static/HTML/checkout.html'));
 }
 
 module.exports.contact_post = (req, res) => {
